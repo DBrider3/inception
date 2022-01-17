@@ -3,14 +3,27 @@ version: '3'
 
 services:
 
+  mariadb:
+    build:
+      context: ./requirements/mariadb
+      dockerfile: Dockerfile
+    container_name: mariadb
+    restart: unless-stopped
+    #volumes:
+      #- ./dbdata:/var/lib/mysql
+    networks:
+      - app-network
+
   wordpress:
+    depends_on:
+      - mariadb
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
     container_name: wordpress
     restart: unless-stopped
-    volumes:
-      - ./tools/wordpress:/var/www/html
+    #volumes:
+      #- ./requirements/tools/wordpress:/var/www/html
     networks:
       - app-network
 
@@ -26,7 +39,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./tools/wordpress:/var/www/html
+      - ./requirements/tools/wordpress:/var/www/html
     networks:
       - app-network
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Dockerfile                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+         #
+#    By: dcho <dcho@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/12 22:47:39 by dcho              #+#    #+#              #
-#    Updated: 2021/06/15 19:49:57 by dcho             ###   ########.fr        #
+#    Updated: 2021/07/12 18:16:43 by dcho             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,18 @@ RUN		sed -i 's/deb.debian.org/ftp.kr.debian.org/g' etc/apt/sources.list && \
 		apt-get install -y \
 		mariadb-server \
 		vim \
-		dumb-init
+		dumb-init \
+		procps
 
-COPY	conf/php.ini		/etc/php/7.3/fpm
-COPY	conf/latest.tar.gz	/
-RUN		tar xvf /latest.tar.gz && rm /latest.tar.gz && \
-		service php7.3-fpm start
-ENTRYPOINT [ "php-fpm7.3", "-F", "-R" ]
+COPY  conf/wp-saved.sql  /
+
+RUN		service mysql start && \
+		mysql -e "create database wordpress" && \
+		mysql -u root wordpress < wp-saved.sql && \
+		mysql -e "set password=password('!qaz@wsx3#')" && \
+		mysql -e "flush privileges"
+
+ENTRYPOINT [ "mysqld_safe"]
 
 
-EXPOSE	9000
+EXPOSE	3306
