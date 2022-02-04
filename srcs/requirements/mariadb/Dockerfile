@@ -20,9 +20,10 @@ RUN		sed -i 's/deb.debian.org/ftp.kr.debian.org/g' etc/apt/sources.list && \
 		vim \
 		dumb-init \
 		procps
-
-COPY  conf/wp-saved.sql  /
-
+ 
+COPY	conf/wp-saved.sql	/
+COPY	tools/mariadb.sh	/
+COPY	conf/my.cnf			/etc/mysql/my.cnf
 #RUN		service mysql start && \
 #	mysql -e "create database wordpress" && \
 #	mysql -u root wordpress < wp-sasved.sql && \
@@ -32,7 +33,7 @@ COPY  conf/wp-saved.sql  /
 
 
 #CMD		bash mariadb.sh
-#ENTRYPOINT    ["sh", "./tools/mariadb.sh"]
-CMD    ["bash", "./tools/mariadb.sh"]
+ENTRYPOINT    ["sh", "./mariadb.sh"]
+# CMD    ["bash", "./mariadb.sh"]
 
 EXPOSE	3306

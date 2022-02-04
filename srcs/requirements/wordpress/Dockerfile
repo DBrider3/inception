@@ -24,12 +24,13 @@ RUN		sed -i 's/deb.debian.org/ftp.kr.debian.org/g' etc/apt/sources.list && \
 
 COPY	conf/php.ini		/etc/php/7.3/fpm
 COPY	conf/latest.tar.gz	/
+COPY	conf/wp-config.php	/var/www/html/wordpress/wp-config.php
 
 RUN		mkdir -p /var/www/html && \
 		tar xvf /latest.tar.gz -C /var/www/html && \
 		chown -R www-data:www-data /var/www/html && \
 		service php7.3-fpm start && \
-		mv /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php && \
+		rm /var/www/html/wordpress/wp-config-sample.php && \
 		echo "listen = 9000" >> /etc/php/7.3/fpm/pool.d/www.conf
 
 # RUN		service php7.3-fpm start
