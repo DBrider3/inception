@@ -8,8 +8,8 @@
 // define( 'DB_CHARSET', 'utf8' );
 // define( 'DB_COLLATE', '' );
 define( 'DB_NAME', 'wordpress');
-define( 'DB_USER', 'root');
-define(	'DB_PASSWORD', '!qaz@wsx3#');
+define( 'DB_USER', 'dcho');
+define(	'DB_PASSWORD', 'dcho');
 define(	'DB_HOST', 'mariadb');
 define( 'DB_CHARSET', 'utf8' );
 define( 'DB_COLLATE', '' );

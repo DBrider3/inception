@@ -6,7 +6,7 @@
 #    By: dcho <dcho@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/12 22:47:39 by dcho              #+#    #+#              #
-#    Updated: 2022/02/03 17:40:18 by dcho             ###   ########.fr        #
+#    Updated: 2022/02/04 13:55:05 by dcho             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ RUN		sed -i 's/deb.debian.org/ftp.kr.debian.org/g' etc/apt/sources.list && \
 		vim \
 		dumb-init \
 		procps
- 
+
 COPY	conf/wp-saved.sql	/
 COPY	tools/mariadb.sh	/
 COPY	conf/my.cnf			/etc/mysql/my.cnf
@@ -33,7 +33,7 @@ COPY	conf/my.cnf			/etc/mysql/my.cnf
 
 
 #CMD		bash mariadb.sh
-ENTRYPOINT    ["sh", "./mariadb.sh"]
+ENTRYPOINT    ["sh", "mariadb.sh"]
 # CMD    ["bash", "./mariadb.sh"]
 
 EXPOSE	3306

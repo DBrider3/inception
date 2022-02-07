@@ -6,7 +6,7 @@
 #    By: dcho <dcho@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/12 22:47:39 by dcho              #+#    #+#              #
-#    Updated: 2021/07/12 18:58:26 by dcho             ###   ########.fr        #
+#    Updated: 2022/02/07 17:02:33 by dcho             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ RUN		sed -i 's/deb.debian.org/ftp.kr.debian.org/g' etc/apt/sources.list && \
 		vim \
 		php-fpm \
 		php-mysql \
-		dumb-init
+		dumb-init \
+		mariadb-client
 
 COPY	conf/php.ini		/etc/php/7.3/fpm
 COPY	conf/latest.tar.gz	/
