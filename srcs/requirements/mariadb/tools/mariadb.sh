@@ -1,7 +1,12 @@
 #!/bin/sh
 service mysql start;
+#mysql -e "create database if not exists wordpress" && \
+#mysql -e "create user if not exists 'dcho'@'%' identified by 'dcho'" && \
+#mysql -e "grant all privileges on wordpress.* to 'dcho'@'%'" && \
+#mysql -u root wordpress < wp-saved.sql && \
+#mysql -e "set password=password('!qaz@wsx3#')" && \
+#mysql -e "flush privileges"
 
-#mysql -e "create database wordpress";
 mysql -e "CREATE DATABASE IF NOT EXISTS wordpress";
 mysql -e "CREATE USER IF NOT EXISTS 'dcho'@'%' IDENTIFIED BY 'dcho'";
 mysql -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'dcho'@'%'";
