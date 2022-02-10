@@ -1,14 +1,18 @@
-.PHONY:	 all up fclean
+
+DB = /home/dcho/data/dbdata
+WP = /home/dcho/data/wp
+DOCKER_COMPOSE = docker-compose -f srcs/docker-compose.yml
 
 all:
-		mkdir -p /Users/dcho/data/wp
-		mkdir -p /Users/dcho/data/dbdata
-		docker-compose -f srcs/docker-compose.yml up --build
+		@sudo mkdir -p $(DB) $(WP)
+		@$(DOCKER_COMPOSE) up --build -d
 
 up:
-		docker-compose -f srcs/docker-compose.yml up --build -d
+		@$(DOCKER_COMPOSE) up --build -d
 
 fclean:
-		docker-compose -f srcs/docker-compose.yml down --rmi all --volumes
-		docker image prune
-		rm -rf /Users/dcho/data/*
+		@$(DOCKER_COMPOSE) down --rmi all --volumes
+		@docker rmi -f debian:buster
+		@sudo rm -rf /home/dcho/data/*
+
+.PHONY:	 all up fclean

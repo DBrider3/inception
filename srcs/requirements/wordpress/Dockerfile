@@ -34,12 +34,4 @@ RUN		mkdir -p /var/www/html && \
 		rm /var/www/html/wordpress/wp-config-sample.php && \
 		echo "listen = 9000" >> /etc/php/7.3/fpm/pool.d/www.conf
 
-# RUN		service php7.3-fpm start
-# CMD		echo "\ndaemon off;" >> /etc/php/7.3/fpm/php-fpm.conf
 ENTRYPOINT [ "php-fpm7.3", "-F", "-R" ]
-# ENTRYPOINT [ "/usr/bin/dumb-init"]
-
-# CMD			[ "/bin/bash"]
-
-
-EXPOSE	9000

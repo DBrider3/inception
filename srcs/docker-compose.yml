@@ -10,8 +10,8 @@ services:
     restart: unless-stopped
     volumes:
       - dbdata:/var/lib/mysql
-    #expose:
-      #- "3306"
+    expose:
+      - "3306"
     networks:
       - app-network
 
@@ -25,8 +25,8 @@ services:
     restart: unless-stopped
     volumes:
       - wp:/var/www/html
-    #expose:
-      #- "9000"
+    expose:
+      - "9000"
     networks:
       - app-network
 
@@ -52,13 +52,13 @@ volumes:
     driver_opts: # dbdata에 대한 옵션
       o: bind # 내가 지정한 로컬 경로와 도커 내의 실제 볼륨을 연동시켜 주겠다.
       type: volume # 타입이 두가지 있다. 바인드 머시기랑 볼륨 있다.
-      device: /Users/dcho/data/dbdata
+      device: /home/dcho/data/dbdata
   wp:
     driver: local
     driver_opts: # wp 대한 옵션
       o: bind # 내가 지정한 로컬 경로와 도커 내의 실제 볼륨을 연동시켜 주겠다.
       type: volume # 타입이 두가지 있다. 바인드 머시기랑 볼륨 있다.
-      device: /Users/dcho/data/wp
+      device: /home/dcho/data/wp
 
 
 networks:
