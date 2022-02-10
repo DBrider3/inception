@@ -1,18 +1,18 @@
 <?php
 
 // ** MySQL settings - You can get this info from your web host ** //
-// define( 'DB_NAME', getenv('MYSQL_DATABASE'));
-// define( 'DB_USER', getenv('MYSQL_USER'));
-// define(	'DB_PASSWORD', getenv('MYSQL_PASSWORD'));
-// define(	'DB_HOST', 'mariadb');
-// define( 'DB_CHARSET', 'utf8' );
-// define( 'DB_COLLATE', '' );
-define( 'DB_NAME', 'wordpress');
-define( 'DB_USER', 'dcho');
-define(	'DB_PASSWORD', 'dcho');
+define( 'DB_NAME', getenv('MYSQL_DB'));
+define( 'DB_USER', getenv('MYSQL_USER'));
+define(	'DB_PASSWORD', getenv('MYSQL_USER_PW'));
 define(	'DB_HOST', 'mariadb');
 define( 'DB_CHARSET', 'utf8' );
 define( 'DB_COLLATE', '' );
+// define( 'DB_NAME', 'wordpress');
+// define( 'DB_USER', 'dcho');
+// define(	'DB_PASSWORD', 'dcho1234');
+// define(	'DB_HOST', 'mariadb');
+// define( 'DB_CHARSET', 'utf8' );
+// define( 'DB_COLLATE', '' );
 
 
 /**Authentication unique keys and salts.*/

@@ -8,6 +8,8 @@ services:
       dockerfile: Dockerfile
     container_name: mariadb
     restart: unless-stopped
+    env_file:
+      - .env
     volumes:
       - dbdata:/var/lib/mysql
     expose:
@@ -23,6 +25,8 @@ services:
       dockerfile: Dockerfile
     container_name: wordpress
     restart: unless-stopped
+    env_file:
+      - .env
     volumes:
       - wp:/var/www/html
     expose:
@@ -38,6 +42,8 @@ services:
             dockerfile: Dockerfile
     container_name: nginx
     restart: unless-stopped
+    env_file:
+      - .env
     ports:
       - "80:80"
       - "443:443"

@@ -32,6 +32,9 @@ RUN		mkdir -p /var/www/html && \
 		chown -R www-data:www-data /var/www/html && \
 		service php7.3-fpm start && \
 		rm /var/www/html/wordpress/wp-config-sample.php && \
+		echo "env[MYSQL_DB]=\$MYSQL_DB" >> /etc/php/7.3/fpm/pool.d/www.conf && \
+		echo "env[MYSQL_USER]=\$MYSQL_USER" >> /etc/php/7.3/fpm/pool.d/www.conf && \
+		echo "env[MYSQL_USER_PW]=\$MYSQL_USER_PW" >> /etc/php/7.3/fpm/pool.d/www.conf && \
 		echo "listen = 9000" >> /etc/php/7.3/fpm/pool.d/www.conf
 
 ENTRYPOINT [ "php-fpm7.3", "-F", "-R" ]
