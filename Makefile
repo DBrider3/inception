@@ -13,6 +13,6 @@ up:
 fclean:
 		@$(DOCKER_COMPOSE) down --rmi all --volumes
 		@docker rmi -f debian:buster
-		@sudo rm -rf /home/dcho/data/*
+		@sudo rm -rf $(DB) $(WP)
 
 .PHONY:	 all up fclean
